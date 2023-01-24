@@ -53,12 +53,14 @@ export default function Hero() {
                                 set it up once, and get beautiful results forever.
                             </p>
                             <div
-                                className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center"
+                                className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center sm:gap-3"
                                 data-aos="zoom-y-out"
                                 data-aos-delay="300"
                             >
                                 <Button href="#0">Start free trial</Button>
-                                <Button href="#0">Learn more</Button>
+                                <Button colorScheme="black" href="#0">
+                                    Learn more
+                                </Button>
                             </div>
                         </div>
                     </div>
