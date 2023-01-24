@@ -1,10 +1,10 @@
 import Head from 'next/head';
-import Image from 'next/image';
 import Layout, { siteTitle } from '../components/layout';
-import clsx from 'clsx';
-import Button from '@ui/Button';
 import Hero from '../components/hero';
-import { FaArrowCircleRight, FaExternalLinkAlt, FaArrowRight } from 'react-icons/fa';
+import Features from '../components/features';
+import FeaturesBlocks from '../components/featuresBlocks';
+import Testimonials from '../components/testimonials';
+import Newsletter from '../components/newsletter';
 
 export default function Home() {
     return (
@@ -14,6 +14,10 @@ export default function Home() {
             </Head>
 
             <Hero />
+            <Features />
+            <FeaturesBlocks />
+            <Testimonials />
+            <Newsletter />
         </Layout>
     );
 }
