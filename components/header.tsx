@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Logo from '@ui/Logo';
 import Button from '@ui/Button';
 import ThemeToggler from '@ui/ThemeToggler';
-import { Disclosure } from '@headlessui/react';
+import { Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const mainNav = [
@@ -26,71 +26,79 @@ export default function Header() {
     }, [top]);
 
     return (
-        <Disclosure
+        <Menu
             as="header"
             className={clsx(
-                'fixed w-full z-30 md:bg-opacity-90 transition duration-150 ease-in-out',
+                'fixed  w-full z-30 md:bg-opacity-90 transition duration-150 ease-in-out',
                 !top && 'bg-white backdrop-blur-sm shadow-lg'
             )}
         >
             {({ open }) => (
                 <>
-                    <div className="relative max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
-                        <div className="flex flex-1 items-center justify-between h-16">
-                            <div className="flex flex-shrink-0 items-center">
-                                <Logo />
-                            </div>
-                            <div className="flex items-center">
-                                {/* Large screen navigation */}
-                                <nav className="hidden sm:ml-6 sm:flex items-center">
-                                    <ul className="flex items-center gap-4">
-                                        {mainNav.map((item) => (
-                                            <li key={item.name}>
-                                                <Link
-                                                    href={item.href}
-                                                    className="text-sm hover:text-blue-600"
-                                                >
-                                                    {item.name}
-                                                </Link>
-                                            </li>
-                                        ))}
-                                    </ul>
-                                    <div className="flex gap-2 pl-5 ml-5 border-l border-l-slate-200">
-                                        <ThemeToggler />
-                                    </div>
-                                </nav>
-                            </div>
-                            <div className="flex items-center sm:hidden">
-                                {/* Mobile menu button */}
-                                <Disclosure.Button as={Button} style="outline" square>
-                                    <span className="sr-only">Open main menu</span>
-                                    {open ? (
-                                        <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
-                                    ) : (
-                                        <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
-                                    )}
-                                </Disclosure.Button>
-                            </div>
+                    {/* <div className="relative max-w-6xl mx-auto px-5 sm:px-6 lg:px-8"> */}
+                    <div
+                        className={clsx(
+                            'relative flex flex-1 items-center justify-between',
+                            'max-w-6xl h-16 mx-auto px-5 sm:px-6 lg:px-8'
+                        )}
+                    >
+                        {/* <div className="flex flex-1 items-center justify-between h-16"> */}
+                        <div className="flex flex-shrink-0 items-center">
+                            <Logo />
+                        </div>
+                        <div className="flex items-center">
+                            {/* Large screen navigation */}
+                            <nav className="hidden sm:ml-6 sm:flex items-center">
+                                <ul className="flex items-center gap-5">
+                                    {mainNav.map((item) => (
+                                        <li key={item.name}>
+                                            <Link
+                                                href={item.href}
+                                                className="font-medium text-sm hover:text-blue-600"
+                                            >
+                                                {item.name}
+                                            </Link>
+                                        </li>
+                                    ))}
+                                </ul>
+                                <div className="flex gap-2 pl-5 ml-5 border-l border-l-slate-200">
+                                    <ThemeToggler />
+                                </div>
+                            </nav>
+                        </div>
+                        <div className="flex items-center sm:hidden">
+                            {/* Mobile menu button */}
+                            <Menu.Button as={Button} style="outline" square>
+                                <span className="sr-only">Open main menu</span>
+                                {open ? (
+                                    <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                                ) : (
+                                    <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                                )}
+                            </Menu.Button>
                         </div>
                     </div>
+                    {/* </div> */}
                     {/* Mobile navigation  */}
-                    <Disclosure.Panel
+                    <Menu.Items
                         as="nav"
-                        className=" bg-slate-50 rounded-md shadow-md p-2 sm:hidden"
+                        className="bg-slate-50 font-semibold rounded-md shadow-md px-8 py-5 sm:hidden"
                     >
-                        <ul className="space-y-2 px-2 pt-2 pb-4 mb-4 border-b border-b-slate-200 ">
+                        <div className="flex flex-col text-right gap-5 px-2 pt-2 pb-4 mb-4 border-b border-b-gray-200">
                             {mainNav.map((item) => (
-                                <li key={item.name}>
-                                    <Link href={item.href} className="">
+                                <Menu.Item key={item.name}>
+                                    <Link href={item.href} className="w-full">
                                         {item.name}
                                     </Link>
-                                </li>
+                                </Menu.Item>
                             ))}
-                        </ul>
-                        <ThemeToggler />
-                    </Disclosure.Panel>
+                        </div>
+                        <div className="flex items-center justify-end gap-3">
+                            Cambiar tema <ThemeToggler />
+                        </div>
+                    </Menu.Items>
                 </>
             )}
-        </Disclosure>
+        </Menu>
     );
 }
