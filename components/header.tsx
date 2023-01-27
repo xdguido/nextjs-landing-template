@@ -1,6 +1,17 @@
 import { useState, useEffect } from 'react';
+import clsx from 'clsx';
 import Link from 'next/link';
+import Logo from '@ui/Logo';
 import Button from '@ui/Button';
+import ThemeToggler from '@ui/ThemeToggler';
+import { Disclosure } from '@headlessui/react';
+import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+
+const mainNav = [
+    { name: 'Servicios', href: '/' },
+    { name: 'Nosotros', href: '/' },
+    { name: 'Contacto', href: '/' }
+];
 
 export default function Header() {
     const [top, setTop] = useState(true);
@@ -15,64 +26,71 @@ export default function Header() {
     }, [top]);
 
     return (
-        <header
-            className={`fixed w-full z-30 md:bg-opacity-90 transition duration-300 ease-in-out ${
+        <Disclosure
+            as="header"
+            className={clsx(
+                'fixed w-full z-30 md:bg-opacity-90 transition duration-150 ease-in-out',
                 !top && 'bg-white backdrop-blur-sm shadow-lg'
-            }`}
+            )}
         >
-            <div className="max-w-6xl mx-auto px-5 sm:px-6">
-                <div className="flex items-center justify-between h-16 md:h-20">
-                    {/* Site branding */}
-                    <div className="flex-shrink-0 mr-4">
-                        {/* Logo */}
-                        <Link href="/" className="block" aria-label="Cruip">
-                            <svg
-                                className="w-8 h-8"
-                                viewBox="0 0 32 32"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <defs>
-                                    <radialGradient
-                                        cx="21.152%"
-                                        cy="86.063%"
-                                        fx="21.152%"
-                                        fy="86.063%"
-                                        r="79.941%"
-                                        id="header-logo"
-                                    >
-                                        <stop stopColor="#4FD1C5" offset="0%" />
-                                        <stop stopColor="#81E6D9" offset="25.871%" />
-                                        <stop stopColor="#338CF5" offset="100%" />
-                                    </radialGradient>
-                                </defs>
-                                <rect
-                                    width="32"
-                                    height="32"
-                                    rx="16"
-                                    fill="url(#header-logo)"
-                                    fillRule="nonzero"
-                                />
-                            </svg>
-                        </Link>
+            {({ open }) => (
+                <>
+                    <div className="relative max-w-6xl mx-auto px-5 sm:px-6 lg:px-8">
+                        <div className="flex flex-1 items-center justify-between h-16">
+                            <div className="flex flex-shrink-0 items-center">
+                                <Logo />
+                            </div>
+                            <div className="flex items-center">
+                                {/* Large screen navigation */}
+                                <nav className="hidden sm:ml-6 sm:flex items-center">
+                                    <ul className="flex items-center gap-4">
+                                        {mainNav.map((item) => (
+                                            <li key={item.name}>
+                                                <Link
+                                                    href={item.href}
+                                                    className="text-sm hover:text-blue-600"
+                                                >
+                                                    {item.name}
+                                                </Link>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                    <div className="flex gap-2 pl-5 ml-5 border-l border-l-slate-200">
+                                        <ThemeToggler />
+                                    </div>
+                                </nav>
+                            </div>
+                            <div className="flex items-center sm:hidden">
+                                {/* Mobile menu button */}
+                                <Disclosure.Button as={Button} style="outline" square>
+                                    <span className="sr-only">Open main menu</span>
+                                    {open ? (
+                                        <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                                    ) : (
+                                        <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                                    )}
+                                </Disclosure.Button>
+                            </div>
+                        </div>
                     </div>
-
-                    {/* Site navigation */}
-                    <nav className="flex flex-grow">
-                        <ul className="flex flex-grow gap-2 justify-end flex-wrap items-center">
-                            <li>
-                                <Button colorScheme="black" href="/signin">
-                                    Sign in
-                                </Button>
-                            </li>
-                            <li>
-                                <Button colorScheme="black" style="outline" href="/signup">
-                                    <span>Sign up</span>
-                                </Button>
-                            </li>
+                    {/* Mobile navigation  */}
+                    <Disclosure.Panel
+                        as="nav"
+                        className=" bg-slate-50 rounded-md shadow-md p-2 sm:hidden"
+                    >
+                        <ul className="space-y-2 px-2 pt-2 pb-4 mb-4 border-b border-b-slate-200 ">
+                            {mainNav.map((item) => (
+                                <li key={item.name}>
+                                    <Link href={item.href} className="">
+                                        {item.name}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
-                    </nav>
-                </div>
-            </div>
-        </header>
+                        <ThemeToggler />
+                    </Disclosure.Panel>
+                </>
+            )}
+        </Disclosure>
     );
 }

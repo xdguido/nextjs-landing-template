@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const buttonStyles = cva(
     [
-        'flex items-center justify-center gap-2 px-6 py-3 font-medium leading-tight rounded-md lg:text-lg',
+        'flex items-center justify-center gap-2 px-6 py-2.5 font-medium leading-tight rounded-md lg:text-lg',
         'focus:outline-none focus-visible:ring-offset-2 focus-visible:ring-2',
         'transition duration-150 ease-in-out'
     ],
@@ -16,10 +16,11 @@ const buttonStyles = cva(
             },
             style: {
                 solid: ['shadow-md text-slate-50', 'hover:shadow-lg', 'focus-visible:shadow-lg'],
-                outline: ['py-2.5 border bg-inherit']
+                outline: ['py-2 border bg-inherit']
             },
             fullWidth: { true: 'w-full' },
-            uppercase: { true: 'uppercase' }
+            uppercase: { true: 'uppercase' },
+            square: { true: 'px-2.5' }
         },
         defaultVariants: {
             colorScheme: 'blue',
@@ -87,6 +88,7 @@ export default function Button({
     style,
     fullWidth,
     uppercase,
+    square,
     children,
     onClick,
     href,
@@ -95,7 +97,7 @@ export default function Button({
     return href ? (
         <Link
             href={href}
-            className={buttonStyles({ colorScheme, style, fullWidth, uppercase })}
+            className={buttonStyles({ colorScheme, style, fullWidth, uppercase, square })}
             {...props}
         >
             {children}
@@ -103,7 +105,7 @@ export default function Button({
     ) : (
         <button
             onClick={onClick}
-            className={buttonStyles({ colorScheme, style, fullWidth, uppercase })}
+            className={buttonStyles({ colorScheme, style, fullWidth, uppercase, square })}
             {...props}
         >
             {children}
