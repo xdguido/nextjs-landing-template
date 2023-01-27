@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 import Logo from '@ui/Logo';
@@ -63,7 +63,8 @@ export default function Header() {
                         </div>
                     </nav>
                 </div>
-                <Menu as="div" className="relative">
+                {/* Mobile navigation  */}
+                <Menu as="div" className="relative sm:hidden">
                     {({ open }) => (
                         <>
                             <div className="flex items-center sm:hidden">
@@ -77,25 +78,33 @@ export default function Header() {
                                     )}
                                 </Menu.Button>
                             </div>
-
-                            {/* Mobile navigation  */}
-                            <Menu.Items
-                                as="nav"
-                                className="absolute right-0 top-[3.5rem] min-w-[16rem] bg-gray-50 font-semibold rounded-md shadow px-8 py-5 sm:hidden"
+                            <Transition
+                                as={Fragment}
+                                enter="transition ease-out duration-100"
+                                enterFrom="transform opacity-0 scale-95"
+                                enterTo="transform opacity-100 scale-100"
+                                leave="transition ease-in duration-75"
+                                leaveFrom="transform opacity-100 scale-100"
+                                leaveTo="transform opacity-0 scale-95"
                             >
-                                <div className="flex flex-col gap-5 px-2 pt-2 pb-4 mb-4 border-b border-b-gray-200">
-                                    {mainNav.map((item) => (
-                                        <Menu.Item key={item.name}>
-                                            <Link href={item.href} className="w-full">
-                                                {item.name}
-                                            </Link>
-                                        </Menu.Item>
-                                    ))}
-                                </div>
-                                <div className="flex items-center justify-center gap-3">
-                                    Cambiar tema <ThemeToggler />
-                                </div>
-                            </Menu.Items>
+                                <Menu.Items
+                                    as="nav"
+                                    className="absolute right-0 top-[3.5rem] min-w-[16rem] bg-gray-50 font-semibold rounded-md shadow px-8 py-5"
+                                >
+                                    <div className="flex flex-col gap-5 px-2 pt-2 pb-4 mb-4 border-b border-b-gray-200">
+                                        {mainNav.map((item) => (
+                                            <Menu.Item key={item.name}>
+                                                <Link href={item.href} className="w-full">
+                                                    {item.name}
+                                                </Link>
+                                            </Menu.Item>
+                                        ))}
+                                    </div>
+                                    <div className="flex items-center justify-center gap-3">
+                                        Cambiar tema <ThemeToggler />
+                                    </div>
+                                </Menu.Items>
+                            </Transition>
                         </>
                     )}
                 </Menu>
