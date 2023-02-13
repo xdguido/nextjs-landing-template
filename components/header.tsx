@@ -9,7 +9,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { FaGithub } from 'react-icons/fa';
 
 const mainNav = [
-    { name: 'Services', href: '/' },
+    { name: 'Solutions', href: '/' },
     { name: 'About', href: '/' },
     { name: 'Contact', href: '/' }
 ];

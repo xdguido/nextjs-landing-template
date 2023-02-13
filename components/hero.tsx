@@ -38,10 +38,12 @@ export default function Hero() {
                             className="text-5xl md:text-8xl font-extrabold leading-tighter tracking-tighter mb-4"
                             data-aos="zoom-y-out"
                         >
-                            Make your website{' '}
+                            Unleash Your
                             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">
-                                wonderful
+                                {' '}
+                                Business{' '}
                             </span>
+                            Potential
                         </h1>
                         <div className="max-w-3xl mx-auto">
                             <p
@@ -49,8 +51,8 @@ export default function Hero() {
                                 data-aos="zoom-y-out"
                                 data-aos-delay="150"
                             >
-                                Our landing page template works on all devices, so you only have to
-                                set it up once, and get beautiful results forever.
+                                Transform Your Online Presence with a Dynamic, User-Friendly, and
+                                Responsive Website.
                             </p>
                             <div
                                 className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center sm:gap-3"
