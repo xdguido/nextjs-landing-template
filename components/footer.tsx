@@ -301,8 +301,8 @@ export default function Footer() {
                     {/* Copyrights note */}
                     <div className="text-sm text-gray-600 mr-4">
                         Made by{' '}
-                        <a className="text-blue-600 hover:underline" href="https://cruip.com/">
-                            Cruip
+                        <a className="text-blue-600 hover:underline" href="">
+                            Ipsum
                         </a>
                         . All rights reserved.
                     </div>

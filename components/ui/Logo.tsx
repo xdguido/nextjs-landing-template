@@ -2,7 +2,7 @@ export default function Logo() {
     return (
         <svg
             id="logo-76"
-            width="218"
+            width="180"
             height="40"
             viewBox="0 0 218 40"
             fill="none"

@@ -6,11 +6,12 @@ import Button from '@ui/Button';
 import ThemeToggler from '@ui/ThemeToggler';
 import { Menu, Transition } from '@headlessui/react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import { FaGithub } from 'react-icons/fa';
 
 const mainNav = [
-    { name: 'Servicios', href: '/' },
-    { name: 'Nosotros', href: '/' },
-    { name: 'Contacto', href: '/' }
+    { name: 'Services', href: '/' },
+    { name: 'About', href: '/' },
+    { name: 'Contact', href: '/' }
 ];
 
 export default function Header() {
@@ -58,8 +59,11 @@ export default function Header() {
                                 </li>
                             ))}
                         </ul>
-                        <div className="flex gap-2 pl-5 ml-5 border-l border-l-slate-200">
+                        <div className="flex justify-center items-center pl-5 ml-5 border-l border-l-slate-200">
                             <ThemeToggler />
+                            <Button colorScheme="gray" style="link" square>
+                                <FaGithub className="h-5 w-5" />
+                            </Button>
                         </div>
                     </nav>
                 </div>
@@ -69,12 +73,12 @@ export default function Header() {
                         <>
                             <div className="flex items-center sm:hidden">
                                 {/* Mobile menu button */}
-                                <Menu.Button as={Button} style="outline" square>
+                                <Menu.Button as={Button} colorScheme="black" style="link" square>
                                     <span className="sr-only">Open main menu</span>
                                     {open ? (
-                                        <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
+                                        <XMarkIcon className="block h-7 w-7" aria-hidden="true" />
                                     ) : (
-                                        <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
+                                        <Bars3Icon className="block h-7 w-7" aria-hidden="true" />
                                     )}
                                 </Menu.Button>
                             </div>
@@ -89,9 +93,9 @@ export default function Header() {
                             >
                                 <Menu.Items
                                     as="nav"
-                                    className="absolute right-0 top-[3.5rem] min-w-[16rem] bg-gray-50 font-semibold rounded-md shadow px-8 py-5"
+                                    className="absolute right-0 top-[4rem] min-w-[16rem] bg-gray-50 font-semibold rounded-md shadow px-8 py-5"
                                 >
-                                    <div className="flex flex-col gap-5 px-2 pt-2 pb-4 mb-4 border-b border-b-gray-200">
+                                    <div className="flex flex-col gap-5 pt-2 pb-4 mb-4 border-b border-b-gray-200">
                                         {mainNav.map((item) => (
                                             <Menu.Item key={item.name}>
                                                 <Link href={item.href} className="w-full">
@@ -100,8 +104,16 @@ export default function Header() {
                                             </Menu.Item>
                                         ))}
                                     </div>
-                                    <div className="flex items-center justify-center gap-3">
-                                        Cambiar tema <ThemeToggler />
+                                    <div className="flex flex-col gap-3">
+                                        <div className="flex items-center">
+                                            Change theme <ThemeToggler />
+                                        </div>
+                                        <div className="flex items-center">
+                                            GitHub
+                                            <Button colorScheme="gray" style="link" square>
+                                                <FaGithub className="h-5 w-5" />
+                                            </Button>
+                                        </div>
                                     </div>
                                 </Menu.Items>
                             </Transition>
