@@ -6,7 +6,7 @@ export default function Hero() {
         <section className="relative">
             {/* Illustration behind hero content */}
             <div
-                className="absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none"
+                className="hidden absolute left-1/2 transform -translate-x-1/2 bottom-0 pointer-events-none"
                 aria-hidden="true"
             >
                 <svg
@@ -57,7 +57,9 @@ export default function Hero() {
                                 data-aos="zoom-y-out"
                                 data-aos-delay="300"
                             >
-                                <Button href="#0">Start free trial</Button>
+                                <div className="mb-2.5 sm:mb-0">
+                                    <Button href="#0">Start free trial</Button>
+                                </div>
                                 <Button colorScheme="black" href="#0">
                                     Learn more
                                 </Button>

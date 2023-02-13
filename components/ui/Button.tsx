@@ -10,13 +10,14 @@ const buttonStyles = cva(
     {
         variants: {
             colorScheme: {
-                blue: [''],
-                gray: [''],
-                black: ['']
+                blue: ['text-blue-600'],
+                gray: ['text-gray-500'],
+                black: ['text-black']
             },
             style: {
-                solid: ['shadow-md text-slate-50', 'hover:shadow-lg', 'focus-visible:shadow-lg'],
-                outline: ['py-2 border bg-inherit']
+                solid: ['shadow-md text-gray-50', 'hover:shadow-lg', 'focus-visible:shadow-lg'],
+                outline: ['py-2 border bg-inherit'],
+                link: ['bg-inherit']
             },
             fullWidth: { true: 'w-full' },
             uppercase: { true: 'uppercase' },
@@ -46,13 +47,13 @@ const buttonStyles = cva(
             {
                 colorScheme: 'gray',
                 style: 'solid',
-                class: ['bg-gray-600', 'hover:bg-gray-500 ', 'focus-visible:bg-gray-500']
+                class: ['bg-gray-500', 'hover:bg-gray-500 ', 'focus-visible:bg-gray-500']
             },
             {
                 colorScheme: 'gray',
                 style: 'outline',
                 class: [
-                    'border-gray-600 text-gray-600',
+                    'border-gray-500 text-gray-500',
                     'hover:border-gray-500 hover:text-gray-500',
                     'focus-visible:border-gray-500 focus-visible:text-gray-500'
                 ]

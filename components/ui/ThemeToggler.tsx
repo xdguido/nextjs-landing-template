@@ -12,10 +12,11 @@ export default function ThemeToggler() {
         <Button
             onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
             aria-label="Toggle Dark Mode"
-            style="outline"
+            colorScheme="gray"
+            style="link"
             square
         >
-            {theme === 'light' ? <FiMoon className=" w-5 h-5" /> : <FiSun className=" w-5 h-5" />}
+            {theme === 'light' ? <FiSun className=" w-5 h-5" /> : <FiMoon className=" w-5 h-5" />}
         </Button>
     );
 }
