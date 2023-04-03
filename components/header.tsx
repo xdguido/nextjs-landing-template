@@ -46,7 +46,15 @@ export default function Header() {
                 </div>
                 <div className="flex items-center">
                     {/* Large screen navigation */}
-                    <nav className="hidden sm:ml-6 sm:flex items-center">
+                    <ul className="flex gap-3">
+                        <li>
+                            <Button>Sign in</Button>
+                        </li>
+                        <li>
+                            <Button colorScheme="black">Sign up</Button>
+                        </li>
+                    </ul>
+                    {/* <nav className="hidden sm:ml-6 sm:flex items-center">
                         <ul className="flex items-center gap-5">
                             {mainNav.map((item) => (
                                 <li key={item.name}>
@@ -65,14 +73,13 @@ export default function Header() {
                                 <FaGithub className="h-5 w-5" />
                             </Button>
                         </div>
-                    </nav>
+                    </nav> */}
                 </div>
                 {/* Mobile navigation  */}
-                <Menu as="div" className="relative sm:hidden">
+                {/* <Menu as="div" className="relative sm:hidden">
                     {({ open }) => (
                         <>
                             <div className="flex items-center sm:hidden">
-                                {/* Mobile menu button */}
                                 <Menu.Button as={Button} colorScheme="black" style="link" square>
                                     <span className="sr-only">Open main menu</span>
                                     {open ? (
@@ -119,7 +126,7 @@ export default function Header() {
                             </Transition>
                         </>
                     )}
-                </Menu>
+                </Menu> */}
             </div>
         </header>
     );
