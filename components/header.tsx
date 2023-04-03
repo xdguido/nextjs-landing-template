@@ -41,7 +41,7 @@ export default function Header() {
                 )}
             >
                 {/* <div className="flex flex-1 items-center justify-between h-16"> */}
-                <div className="flex flex-shrink-0 items-center">
+                <div className="hidden sm:flex flex-shrink-0 items-center">
                     <Logo />
                 </div>
                 <div className="flex items-center">
